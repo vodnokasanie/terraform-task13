@@ -10,14 +10,13 @@ resource "aws_autoscaling_group" "blue_asg" {
     version = "$Latest"
   }
 
-  target_group_arns = [data.aws_lb_target_group.blue_tg.arn]
+  target_group_arns = [aws_lb_target_group.blue_tg.arn]
 
   tag {
     key                 = "Name"
     value               = "blue-environment-instance"
     propagate_at_launch = true
   }
-
   tag {
     key                 = "Environment"
     value               = "Blue"
@@ -37,14 +36,13 @@ resource "aws_autoscaling_group" "green_asg" {
     version = "$Latest"
   }
 
-  target_group_arns = [data.aws_lb_target_group.green_tg.arn]
+  target_group_arns = [aws_lb_target_group.green_tg.arn]
 
   tag {
     key                 = "Name"
     value               = "green-environment-instance"
     propagate_at_launch = true
   }
-
   tag {
     key                 = "Environment"
     value               = "Green"
